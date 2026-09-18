@@ -1,0 +1,39 @@
+DATASET:
+  NUM_WORKERS: 2
+  TEST:
+    BATCH_SIZE: 64
+  TYPE: cifar100
+DISTILLER:
+  STUDENT: resnet8x4
+  TEACHER: resnet32x4
+  TYPE: DKD
+DKD:
+  ALPHA: 1.0
+  BETA: 8.0
+  CE_WEIGHT: 1.0
+  T: 4.0
+  WARMUP: 20
+EXPERIMENT:
+  AUG: false
+  LOGIT_STAND: false
+  NAME: ''
+  PROJECT: cifar100_baselines
+  TAG: dkd,res32x4,res8x4,4.0,1.0,8.0
+LOG:
+  PREFIX: ./output
+  SAVE_CHECKPOINT_FREQ: 1000
+  TENSORBOARD_FREQ: 500
+  WANDB: false
+SOLVER:
+  BATCH_SIZE: 64
+  EPOCHS: 240
+  LR: 0.05
+  LR_DECAY_RATE: 0.1
+  LR_DECAY_STAGES:
+  - 150
+  - 180
+  - 210
+  MOMENTUM: 0.9
+  TRAINER: base
+  TYPE: SGD
+  WEIGHT_DECAY: 0.0005
