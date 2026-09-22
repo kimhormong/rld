@@ -48,8 +48,8 @@ class MobileNetV1(nn.Module):
         feat2 = self.model[5][:-1](self.model[4:5](F.relu(feat1)))
         feat3 = self.model[11][:-1](self.model[6:11](F.relu(feat2)))
         feat4 = self.model[13][:-1](self.model[12:13](F.relu(feat3)))
-        feat5 = self.model[14](F.relu(feat4))
-        avg = feat5.reshape(-1, 1024) 
+        feat5 = self.model[14](F.relu(feat4)) # global average pooling layer
+        avg = feat5.reshape(-1, 1024) # shape from [batch_size, 1024, 1, 1] to [batch_size, 1024]
         out = self.fc(avg) 
 
         feats = {}

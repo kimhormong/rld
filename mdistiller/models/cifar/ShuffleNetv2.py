@@ -204,7 +204,7 @@ def ShuffleV2(**kwargs):
 
 if __name__ == "__main__":
     net = ShuffleV2(num_classes=100)
-    x = torch.randn(3, 3, 32, 32)
+    x = torch.randn(3, 3, 224, 224)
     import time
 
     a = time.time()
